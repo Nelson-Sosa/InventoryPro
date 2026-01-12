@@ -48,13 +48,13 @@
       "categoryId": "1",
       "price": 1999.99,
       "cost": 1500,
-      "stock": 1,
+      "stock": 6,
       "minStock": 5,
       "maxStock": 50,
       "unit": "unidad",
       "status": "discontinued",
       "createdAt": "2024-01-01",
-      "updatedAt": "2026-01-12T14:21:04.172Z",
+      "updatedAt": "2026-01-12T15:50:17.621Z",
       "imageUrl": "https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111902_mbp14-silver2.png"
     },
     {
@@ -65,7 +65,7 @@
       "categoryId": "1",
       "price": 1849.99,
       "cost": 1400,
-      "stock": 10,
+      "stock": 11,
       "minStock": 3,
       "maxStock": 30,
       "unit": "unidad",
@@ -99,7 +99,7 @@
       "minStock": 5,
       "maxStock": 50,
       "unit": "unidad",
-      "status": "inactive",
+      "status": "discontinued",
       "createdAt": "2026-01-11T08:00:00Z",
       "updatedAt": "2026-01-11T08:00:00Z"
     },
@@ -163,7 +163,7 @@
       "minStock": 5,
       "maxStock": 20,
       "unit": "unidad",
-      "status": "active",
+      "status": "discontinued",
       "createdAt": "2024-01-28",
       "updatedAt": "2024-01-28"
     },
@@ -175,7 +175,7 @@
       "categoryId": "2",
       "price": 399.99,
       "cost": 280,
-      "stock": 0,
+      "stock": 1,
       "minStock": 5,
       "maxStock": 25,
       "unit": "unidad",
@@ -191,13 +191,13 @@
       "categoryId": "1",
       "price": 99.99,
       "cost": 65,
-      "stock": "110",
+      "stock": 109,
       "minStock": 10,
       "maxStock": 60,
       "unit": "unidad",
       "status": "active",
       "createdAt": "2024-02-05",
-      "updatedAt": "2024-02-05"
+      "updatedAt": "2026-01-12T15:51:26.493Z"
     },
     {
       "id": "9",
@@ -214,6 +214,23 @@
       "status": "discontinued",
       "createdAt": "2024-02-10",
       "updatedAt": "2024-02-10"
+    },
+    {
+      "id": "b36d9dca-bc37-4435-b182-eab5af40e0e5",
+      "sku": "PH-IPH15-BLK",
+      "name": "iPhone 15 128GB Black",
+      "description": "Pantalla Super Retina XDR, Chip A16 Bionic.",
+      "categoryId": "2",
+      "price": 899,
+      "cost": 750,
+      "stock": 15,
+      "minStock": 3,
+      "maxStock": 20,
+      "unit": "unidad",
+      "status": "active",
+      "imageUrl": "https://m.media-amazon.com/images/I/71d7rfSl0wL.jpg",
+      "createdAt": "2026-01-12T15:02:19.821Z",
+      "updatedAt": "2026-01-12T15:02:19.821Z"
     }
   ],
   "movements": [
