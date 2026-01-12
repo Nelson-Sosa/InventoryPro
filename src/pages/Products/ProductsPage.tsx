@@ -75,7 +75,7 @@ const ProductsPage = () => {
     <div className="p-6 space-y-4">
       <h1 className="text-2xl font-bold mb-4">Gestión de Productos</h1>
       <div className="flex justify-between items-center mb-4">
-  <h1 className="text-2xl font-bold">Gestión de Productos</h1>
+
 
   <button
     onClick={() => navigate("/products/new")}

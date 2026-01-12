@@ -94,7 +94,7 @@
       "categoryId": "1",
       "price": 50,
       "cost": 30,
-      "stock": 0,
+      "stock": 1,
       "minStock": 5,
       "maxStock": 50,
       "unit": "unidad",
@@ -205,13 +205,13 @@
       "categoryId": "1",
       "price": 99.99,
       "cost": 65,
-      "stock": 109,
+      "stock": 54,
       "minStock": 10,
       "maxStock": 60,
       "unit": "unidad",
       "status": "active",
       "createdAt": "2024-02-05",
-      "updatedAt": "2026-01-12T15:51:26.493Z"
+      "updatedAt": "2026-01-12T19:49:27.599Z"
     },
     {
       "id": "9",
