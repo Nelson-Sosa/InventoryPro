@@ -8,11 +8,13 @@ const ProductsPage = () => {
   const { products, deleteProduct, updateProduct, loading } = useProducts();
   const navigate = useNavigate();
 
+  // Filtros y búsqueda
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<string | null>(null);
   const [stockFilter, setStockFilter] = useState<"low" | "out" | null>(null);
 
+  // Paginación
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
@@ -20,12 +22,15 @@ const ProductsPage = () => {
   const [adjustProduct, setAdjustProduct] = useState<Product | null>(null);
   const [adjustQty, setAdjustQty] = useState(0);
 
+  // Filtrado y búsqueda
   const filteredProducts = useMemo(() => {
+    const term = searchTerm.toLowerCase();
+
     return products
       .filter(p =>
-        p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        p.sku.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (p.description?.toLowerCase().includes(searchTerm.toLowerCase()) ?? false)
+        (p.name?.toLowerCase().includes(term) ?? false) ||
+        (p.sku?.toLowerCase().includes(term) ?? false) ||
+        (p.description?.toLowerCase().includes(term) ?? false)
       )
       .filter(p => !categoryFilter || p.categoryId === categoryFilter)
       .filter(p => !statusFilter || p.status === statusFilter)
@@ -40,14 +45,24 @@ const ProductsPage = () => {
   const currentProducts = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
-  // Funciones
+  // Funciones de acción
   const handleView = (id: string) => navigate(`/products/${id}`);
   const handleEdit = (id: string) => navigate(`/products/edit/${id}`);
   const handleDelete = async (id: string) => await deleteProduct(id);
-  const handleAdjustStock = (product: Product) => setAdjustProduct(product);
+  const handleAdjustStock = (product: Product) => {
+    setAdjustProduct(product);
+    setAdjustQty(product.stock); // inicia el input con el stock actual
+  };
+
   const submitAdjustStock = async () => {
     if (!adjustProduct) return;
-    await updateProduct(adjustProduct.id, { ...adjustProduct, stock: adjustProduct.stock + adjustQty });
+
+    if (adjustQty < 0) {
+      alert("El stock no puede ser negativo");
+      return;
+    }
+
+    await updateProduct(adjustProduct.id, { ...adjustProduct, stock: adjustQty });
     setAdjustProduct(null);
     setAdjustQty(0);
   };
@@ -88,6 +103,7 @@ const ProductsPage = () => {
         </select>
       </div>
 
+      {/* Tabla de productos */}
       {loading ? <p>Cargando productos...</p> : (
         <ProductTable
           products={currentProducts}
@@ -110,7 +126,13 @@ const ProductsPage = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded shadow w-96">
             <h2 className="text-xl font-bold mb-4">Ajustar Stock: {adjustProduct.name}</h2>
-            <input type="number" value={adjustQty} onChange={e => setAdjustQty(Number(e.target.value))} placeholder="Cantidad a ajustar" className="border p-2 w-full mb-4" />
+            <input
+              type="number"
+              value={adjustQty}
+              onChange={e => setAdjustQty(Number(e.target.value))}
+              placeholder="Cantidad"
+              className="border p-2 w-full mb-4"
+            />
             <div className="flex justify-end gap-2">
               <button onClick={() => setAdjustProduct(null)} className="px-4 py-2 border rounded">Cancelar</button>
               <button onClick={submitAdjustStock} className="px-4 py-2 bg-green-600 text-white rounded">Guardar</button>
