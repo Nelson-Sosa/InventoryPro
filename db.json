@@ -1,0 +1,113 @@
+{
+  "users": [
+    { "id": "1", "email": "admin@inventory.com", "password": "admin123", "name": "Admin User", "role": "admin", "status": "active" },
+    { "id": "2", "email": "supervisor@inventory.com", "password": "super123", "name": "Supervisor User", "role": "supervisor", "status": "active" },
+    { "id": "3", "email": "operador@inventory.com", "password": "oper123", "name": "Operador User", "role": "operador", "status": "active" }
+  ],
+  "categories": [
+    { "id": "1", "name": "Laptops", "description": "Portátiles", "color": "#3B82F6" },
+    { "id": "2", "name": "Smartphones", "description": "Teléfonos", "color": "#10B981" }
+  ],
+   "products": [
+    {
+      "id": "1",
+      "sku": "LAP-001",
+      "name": "MacBook Pro 14",
+      "description": "Portátil potente",
+      "categoryId": "1",
+      "price": 1999.99,
+      "cost": 1500,
+      "stock": 15,
+      "minStock": 5,
+      "maxStock": 50,
+      "unit": "unidad",
+      "status": "active",
+      "createdAt": "2024-01-01",
+      "updatedAt": "2024-01-01"
+    },
+    {
+  "id": "2",
+  "sku": "LAP-002",
+  "name": "Dell XPS 15",
+  "description": "Pantalla OLED 4K y alto rendimiento",
+  "categoryId": "1",
+  "price": 1849.99,
+  "cost": 1400,
+  "stock": 10,
+  "minStock": 3,
+  "maxStock": 30,
+  "unit": "unidad",
+  "status": "active",
+  "createdAt": "2024-01-15",
+  "updatedAt": "2024-01-15"
+},
+{
+  "id": "10",
+  "sku": "PROD-010",
+  "name": "Producto Sin Stock",
+  "categoryId": "1",
+  "price": 50,
+  "cost": 30,
+  "stock": 0,
+  "minStock": 5,
+  "maxStock": 50,
+  "unit": "unidad",
+  "status": "active",
+  "createdAt": "2026-01-11T08:00:00Z",
+  "updatedAt": "2026-01-11T08:00:00Z"
+},
+{
+  "id": "11",
+  "sku": "PROD-011",
+  "name": "Producto Stock Bajo",
+  "categoryId": "1",
+  "price": 100,
+  "cost": 70,
+  "stock": 3,
+  "minStock": 5,
+  "maxStock": 50,
+  "unit": "unidad",
+  "status": "active",
+  "createdAt": "2026-01-11T08:00:00Z",
+  "updatedAt": "2026-01-11T08:00:00Z"
+}
+
+
+  ],
+ "movements": [
+    {
+      "id": "1",
+      "productId": "1",
+      "type": "entrada",
+      "quantity": 20,
+      "previousStock": 0,
+      "newStock": 20,
+      "reason": "Compra inicial",
+      "userId": "1",
+      "createdAt": "2024-01-15"
+    },
+    {
+  "id": "2", 
+  "productId": "2", 
+  "type": "entrada",
+  "quantity": 10,
+  "previousStock": 0,
+  "newStock": 10,
+  "reason": "Carga inicial de stock",
+  "userId": "1",
+  "createdAt": "2024-01-15"
+},
+{
+  "id": "100",
+  "productId": "11",
+  "type": "entrada",
+  "quantity": 5,
+  "previousStock": 3,
+  "newStock": 8,
+  "reason": "Reposición",
+  "userId": "1",
+  "createdAt": "2026-01-11T10:30:00Z"
+}
+
+  ]
+}
