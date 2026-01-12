@@ -125,13 +125,13 @@
       "categoryId": "2",
       "price": 999.99,
       "cost": 750,
-      "stock": "38",
+      "stock": "3815",
       "minStock": 10,
       "maxStock": 100,
       "unit": "unidad",
       "status": "active",
       "createdAt": "2024-01-20",
-      "updatedAt": "2024-01-20"
+      "updatedAt": "2026-01-12T22:48:04.076Z"
     },
     {
       "id": "4",
@@ -280,6 +280,17 @@
       "reason": "Reposición",
       "userId": "1",
       "createdAt": "2026-01-11T10:30:00Z"
+    },
+    {
+      "id": "c07eff9b-0deb-4bf0-b046-99f049a3d393",
+      "productId": "3",
+      "type": "entrada",
+      "quantity": 15,
+      "previousStock": "38",
+      "newStock": "3815",
+      "reason": "compra de proveedores",
+      "userId": "1",
+      "createdAt": "2026-01-12T22:48:04.066Z"
     }
   ]
 }

@@ -5,13 +5,16 @@ import { Movement } from "../../types/Movement";
 
 const API_URL = "http://localhost:3001";
 
-const MovementForm = () => {
+interface Props {
+  onMovementSaved: () => void;
+}
+
+const MovementForm = ({ onMovementSaved }: Props) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [productId, setProductId] = useState("");
   const [type, setType] = useState<Movement["type"]>("entrada");
   const [quantity, setQuantity] = useState(0);
   const [reason, setReason] = useState("");
-  const [reference, setReference] = useState(""); // UI solamente
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -28,7 +31,7 @@ const MovementForm = () => {
 
     if (!selectedProduct) return;
 
-    const prevStock = Number(selectedProduct.stock);
+    const prevStock = selectedProduct.stock;
 
     if (type === "salida" && quantity > prevStock) {
       setError("La salida no puede superar el stock disponible");
@@ -50,7 +53,7 @@ const MovementForm = () => {
       previousStock: prevStock,
       newStock,
       reason,
-      userId: "1", // ✅ coincide con db.json
+      userId: "1",
       createdAt: new Date().toISOString(),
     };
 
@@ -64,14 +67,13 @@ const MovementForm = () => {
     setProductId("");
     setQuantity(0);
     setReason("");
-    setReference("");
     setError("");
 
-    alert("Movimiento registrado correctamente");
+    onMovementSaved();
   };
 
   return (
-    <div className="p-6 border rounded max-w-xl space-y-3">
+    <div className="p-4 border rounded max-w-xl space-y-2">
       <h2 className="text-xl font-bold">Registrar Movimiento</h2>
 
       {error && <p className="text-red-600">{error}</p>}
@@ -104,19 +106,12 @@ const MovementForm = () => {
         onChange={e => setReason(e.target.value)}
       />
 
-      {/* UI opcional – no se guarda */}
-      <input
-        placeholder="Referencia (opcional)"
-        value={reference}
-        onChange={e => setReference(e.target.value)}
-      />
-
       <button
-        onClick={handleSubmit}
-        className="bg-blue-600 text-white px-4 py-2 rounded"
-      >
-        Guardar Movimiento
-      </button>
+  onClick={handleSubmit}
+  className="bg-blue-600 text-white px-4 py-2 rounded"
+>
+  Guardar Movimiento
+</button>
     </div>
   );
 };

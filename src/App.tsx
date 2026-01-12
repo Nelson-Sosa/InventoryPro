@@ -12,7 +12,7 @@ import ProductEditPage from "./pages/Products/ProductEditPage";
 import ProductForm from "./components/products/ProductForm";
 
 import CategoriesPage from "./pages/Categories/CategoriesPage";
-
+import MovementsPage from "./pages/movements/MovementsPage";
 import MainLayout from "./components/layout/MainLayout";
 import ProtectedRoute from "./router/ProtectedRoute";
 
@@ -71,6 +71,15 @@ function App() {
               </ProtectedRoute>
             }
           />
+          {/* Movimientos de inventario */}
+            <Route
+            path="/movements"
+            element={
+            <ProtectedRoute allowedRoles={["admin", "supervisor", "operador"]}>
+            <MovementsPage />
+            </ProtectedRoute>
+          }
+/>
 
           {/* Detalle - todos los roles */}
           <Route
