@@ -15,6 +15,7 @@ import CategoriesPage from "./pages/Categories/CategoriesPage";
 import MovementsPage from "./pages/movements/MovementsPage";
 import MainLayout from "./components/layout/MainLayout";
 import ProtectedRoute from "./router/ProtectedRoute";
+import ReportsPage from "./pages/ReportsPage";
 
 function App() {
   return (
@@ -45,6 +46,15 @@ function App() {
               </ProtectedRoute>
             }
           />
+          {/* Reportes - SOLO admin y supervisor */}
+          <Route
+              path="/reports"
+              element={
+              <ProtectedRoute allowedRoles={["admin", "supervisor"]}>
+              <ReportsPage />
+          </ProtectedRoute>
+  }
+/>
 
           <Route
             path="/categories"
@@ -71,6 +81,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+          
           {/* Movimientos de inventario */}
             <Route
             path="/movements"
@@ -79,6 +90,8 @@ function App() {
             <MovementsPage />
             </ProtectedRoute>
           }
+           
+          
 />
 
           {/* Detalle - todos los roles */}
