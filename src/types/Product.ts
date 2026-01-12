@@ -1,15 +1,17 @@
 export interface Product {
   id: string;
-  name: string;
   sku: string;
+  name: string;
   description?: string;
-  stock: number;
-  minStock: number;
+  categoryId: string;
   price: number;
   cost: number;
+  stock: number;
+  minStock: number;
+  maxStock: number;
+  unit: string;
   status: "active" | "inactive" | "discontinued";
-  categoryId: string;
-  imageUrl?: string;   // 👈 NUEVO
+  imageUrl?: string;
   createdAt: string;
   updatedAt: string;
 }
