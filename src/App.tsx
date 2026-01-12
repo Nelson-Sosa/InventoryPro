@@ -13,7 +13,7 @@ import ProductForm from "./components/products/ProductForm";
 
 import CategoriesPage from "./pages/Categories/CategoriesPage";
 
-
+import MainLayout from "./components/layout/MainLayout";
 import ProtectedRoute from "./router/ProtectedRoute";
 
 function App() {
@@ -26,6 +26,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
 
           {/* Dashboard - todos los roles */}
+           <Route element={<MainLayout />}>
           <Route
             path="/dashboard"
             element={
@@ -80,7 +81,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-
+          </Route>
           {/* Acceso no autorizado */}
           <Route path="/unauthorized" element={<UnauthorizedPage />} />
 

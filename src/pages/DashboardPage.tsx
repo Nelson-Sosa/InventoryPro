@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 import { useNavigate } from "react-router-dom";
 
+
 interface Product {
   id: string;
   name: string;
