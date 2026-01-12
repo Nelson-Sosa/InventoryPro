@@ -1,14 +1,21 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
+
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/DashboardPage";
 import UnauthorizedPage from "./pages/UnauthorizedPage";
-import ProtectedRoute from "./router/ProtectedRoute";
+
 import ProductsPage from "./pages/Products/ProductsPage";
 import ProductDetailPage from "./pages/Products/ProductDetailPage";
 import ProductEditPage from "./pages/Products/ProductEditPage";
 import ProductForm from "./components/products/ProductForm";
+
+import CategoriesPage from "./pages/Categories/CategoriesPage";
+
+
+import ProtectedRoute from "./router/ProtectedRoute";
+
 function App() {
   return (
     <AuthProvider>
@@ -18,7 +25,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
 
-          {/* Rutas protegidas */}
+          {/* Dashboard - todos los roles */}
           <Route
             path="/dashboard"
             element={
@@ -28,15 +35,57 @@ function App() {
             }
           />
 
-          {/* Ruta para acceso no autorizado */}
+          {/* Productos - SOLO admin y supervisor */}
+          <Route
+            path="/products"
+            element={
+              <ProtectedRoute allowedRoles={["admin", "supervisor"]}>
+                <ProductsPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/categories"
+              element={
+              <ProtectedRoute allowedRoles={["admin", "supervisor"]}>
+                <CategoriesPage />
+              </ProtectedRoute>
+  }
+/>
+          <Route
+            path="/products/new"
+            element={
+              <ProtectedRoute allowedRoles={["admin", "supervisor"]}>
+                <ProductForm />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/products/edit/:id"
+            element={
+              <ProtectedRoute allowedRoles={["admin", "supervisor"]}>
+                <ProductEditPage />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Detalle - todos los roles */}
+          <Route
+            path="/products/:id"
+            element={
+              <ProtectedRoute allowedRoles={["admin", "supervisor", "operador"]}>
+                <ProductDetailPage />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Acceso no autorizado */}
           <Route path="/unauthorized" element={<UnauthorizedPage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/products/:id" element={<ProductDetailPage />} />
-          <Route path="/products/edit/:id" element={<ProductEditPage />} />
-          <Route path="/products/new" element={<ProductForm />} />
-          
-          {/* Ruta comodín: si no encuentra ruta, va a login */}
-          <Route path="*" element={<LoginPage />} />
+
+          {/* Ruta comodín */}
+          <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

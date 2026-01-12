@@ -37,6 +37,20 @@
       "name": "Smartphones",
       "description": "Teléfonos",
       "color": "#10B981"
+    },
+    {
+      "id": "b0c6bc83-a5fa-46c8-8017-a05bcae2d9c9",
+      "name": "Accesorios",
+      "description": "Cargadores, audífonos, mouses, teclados y otros accesorios",
+      "color": "#000000",
+      "icon": "🎧"
+    },
+    {
+      "id": "1bcf9047-0256-44c7-9ab9-29a916555cf1",
+      "name": "Componentes",
+      "description": "procesadores, placas de video, memoria ram",
+      "color": "#000000",
+      "icon": ""
     }
   ],
   "products": [

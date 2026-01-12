@@ -10,13 +10,17 @@ interface ProtectedRouteProps {
 const ProtectedRoute = ({ children, allowedRoles }: ProtectedRouteProps) => {
   const { user } = useAuth();
 
-  // Si no hay usuario logueado, redirige a login
-  if (!user) return <Navigate to="/login" replace />;
+  // No autenticado → login
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
-  // Si el rol del usuario no está en allowedRoles, redirige a unauthorized
-  if (!allowedRoles.includes(user.role)) return <Navigate to="/unauthorized" replace />;
+  // Rol no autorizado → unauthorized
+  if (!allowedRoles.includes(user.role)) {
+    return <Navigate to="/unauthorized" replace />;
+  }
 
-  // Usuario autorizado, renderiza los children
+  // Autorizado
   return <>{children}</>;
 };
 
