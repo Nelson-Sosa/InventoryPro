@@ -8,6 +8,7 @@ import ProtectedRoute from "./router/ProtectedRoute";
 import ProductsPage from "./pages/Products/ProductsPage";
 import ProductDetailPage from "./pages/Products/ProductDetailPage";
 import ProductEditPage from "./pages/Products/ProductEditPage";
+import ProductForm from "./components/products/ProductForm";
 function App() {
   return (
     <AuthProvider>
@@ -32,6 +33,8 @@ function App() {
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:id" element={<ProductDetailPage />} />
           <Route path="/products/edit/:id" element={<ProductEditPage />} />
+          <Route path="/products/new" element={<ProductForm />} />
+          
           {/* Ruta comodín: si no encuentra ruta, va a login */}
           <Route path="*" element={<LoginPage />} />
         </Routes>

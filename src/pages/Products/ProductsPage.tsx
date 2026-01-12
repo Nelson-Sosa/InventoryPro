@@ -74,6 +74,17 @@ const ProductsPage = () => {
   return (
     <div className="p-6 space-y-4">
       <h1 className="text-2xl font-bold mb-4">Gestión de Productos</h1>
+      <div className="flex justify-between items-center mb-4">
+  <h1 className="text-2xl font-bold">Gestión de Productos</h1>
+
+  <button
+    onClick={() => navigate("/products/new")}
+    className="bg-green-600 text-white px-4 py-2 rounded"
+  >
+    + Agregar producto
+  </button>
+</div>
+
 
       {/* Filtros y búsqueda */}
       <div className="flex flex-wrap gap-2 items-center mb-4">
