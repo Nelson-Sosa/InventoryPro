@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
+import { useNavigate } from "react-router-dom";
 
 interface Product {
   id: string;
@@ -23,7 +24,7 @@ const DashboardPage = () => {
 
   const [products, setProducts] = useState<Product[]>([]);
   const [movements, setMovements] = useState<Movement[]>([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -160,6 +161,12 @@ const DashboardPage = () => {
       <button onClick={logout} className="bg-red-600 text-white px-4 py-2 rounded mt-4">
         Logout
       </button>
+      <button
+  onClick={() => navigate("/products")}
+  className="bg-blue-600 text-white px-4 py-2 rounded"
+>
+  Gestionar Productos
+</button>
     </div>
   );
 };
