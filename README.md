@@ -150,4 +150,49 @@ npm install
 npx json-server --watch db.json --port 3001
 npm run dev
 
-👤 Credenciales de prueba
+GESTIONINVENTARIO
+├── inventarypro
+│   ├── node_modules
+│   ├── public
+│   ├── src
+│   │   ├── assets
+│   │   ├── components
+│   │   ├── context
+│   │   ├── hooks
+│   │   ├── pages
+│   │   ├── router
+│   │   ├── types
+│   │   ├── App.css
+│   │   ├── App.tsx
+│   │   ├── index.css
+│   │   └── main.tsx
+│   ├── setupTests.ts
+│   ├── .gitignore
+│   ├── AI_INSTRUCTIONS.md
+│   ├── db.json
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── prueba.txt
+│   └── tsconfig.json
+└── README.md
+🧠 Decisiones técnicas
+
+React + TypeScript → escalabilidad y seguridad
+
+Tailwind CSS → consistencia visual
+
+JWT simulado → control de acceso realista
+
+Arquitectura modular → mantenibilidad
+
+json-server → backend ágil para pruebas técnicas
+
+![Login](screenshots/login.png)
+![Dashboard](screenshots/dashboard.png)
+![Productos](screenshots/products.png)
+![Categorías](screenshots/categories.png)
+![Movimientos](screenshots/movements.png)
+
