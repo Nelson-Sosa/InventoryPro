@@ -22,7 +22,8 @@ InventoryPro permite:
 👥 Gestión de usuarios (rol administrador)
 
 El proyecto fue desarrollado cumpliendo estrictamente los Requisitos Funcionales (RF-01 a RF-07) solicitados en la consigna.
-🛠️ Tecnologías utilizadas
+## 🛠️ Tecnologías utilizadas
+
 | Área                 | Tecnologías           |
 | -------------------- | --------------------- |
 | Frontend             | React, TypeScript     |
@@ -34,24 +35,25 @@ El proyecto fue desarrollado cumpliendo estrictamente los Requisitos Funcionales
 | Backend simulado     | json-server           |
 | Build Tool           | Vite                  |
 | Control de versiones | Git & GitHub          |
-RF-01: Autenticación y Autorización
-Funcionalidades implementadas
 
-✅ Pantalla de Login con validación de campos
-✅ Pantalla de Registro de nuevos usuarios
-✅ Manejo de sesión mediante JWT simulado
-✅ Persistencia de sesión (recordar usuario)
-✅ Rutas protegidas según autenticación
-✅ Autorización por roles (Admin / Operador)
-✅ Logout con limpieza de sesión
-✅ Manejo de token expirado
+## 🔐 RF-01: Autenticación y Autorización
 
-Criterios cumplidos
+### Funcionalidades implementadas
+- ✅ Login con validación
+- ✅ Registro de usuarios
+- ✅ JWT simulado
+- ✅ Persistencia de sesión
+- ✅ Rutas protegidas
+- ✅ Roles (Admin / Operador)
+- ✅ Logout
+- ✅ Token expirado
 
-✔ Usuario no autenticado es redirigido a /login
-✔ Operador no puede acceder a rutas administrativas
-✔ Token inválido o expirado redirige a login
-✔ Mensajes de error claros para credenciales incorrectas
+### Criterios cumplidos
+- ✔ Redirección a `/login`
+- ✔ Restricción por rol
+- ✔ Manejo de token inválido
+- ✔ Mensajes de error claros
+
 
 📊 RF-02: Dashboard Principal
 Métricas implementadas
@@ -150,9 +152,11 @@ npm install
 npx json-server --watch db.json --port 3001
 npm run dev
 
+## 📁 Estructura del proyecto
+
+```text
 GESTIONINVENTARIO
 ├── inventarypro
-│   ├── node_modules
 │   ├── public
 │   ├── src
 │   │   ├── assets
@@ -162,23 +166,11 @@ GESTIONINVENTARIO
 │   │   ├── pages
 │   │   ├── router
 │   │   ├── types
-│   │   ├── App.css
 │   │   ├── App.tsx
-│   │   ├── index.css
 │   │   └── main.tsx
-│   ├── setupTests.ts
-│   ├── .gitignore
-│   ├── AI_INSTRUCTIONS.md
 │   ├── db.json
-│   ├── eslint.config.js
-│   ├── index.html
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── postcss.config.js
-│   ├── prueba.txt
-│   └── tsconfig.json
+│   └── package.json
 └── README.md
-🧠 Decisiones técnicas
 
 React + TypeScript → escalabilidad y seguridad
 
