@@ -127,11 +127,21 @@ El proyecto fue desarrollado cumpliendo estrictamente los Requisitos Funcionales
 
 
 🚀 Instalación y ejecución
+# Clonar el repositorio
 git clone https://github.com/Nelson-Sosa/InventoryPro.git
+
+# Acceder al directorio del proyecto
 cd InventoryPro
+
+# Instalar dependencias
 npm install
+
+# Levantar el backend simulado (json-server)
 npx json-server --watch db.json --port 3001
+
+# Ejecutar la aplicación
 npm run dev
+
 
 ## 📁 Estructura del proyecto
 
