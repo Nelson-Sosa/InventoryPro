@@ -1,1 +1,2 @@
-import "@testing-library/jest-dom"; // agrega matchers como toBeInTheDocument
+import '@testing-library/jest-dom';
+

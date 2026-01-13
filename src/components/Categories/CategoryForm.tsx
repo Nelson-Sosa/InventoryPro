@@ -13,7 +13,6 @@ const CategoryForm = ({ onSave, editingCategory }: Props) => {
   const [color, setColor] = useState("#000000");
   const [icon, setIcon] = useState("");
 
-  // <-- Este useEffect sincroniza los estados cuando cambia editingCategory
   useEffect(() => {
     if (editingCategory) {
       setName(editingCategory.name);
@@ -21,7 +20,6 @@ const CategoryForm = ({ onSave, editingCategory }: Props) => {
       setColor(editingCategory.color || "#000000");
       setIcon(editingCategory.icon || "");
     } else {
-      // Reset si no hay editingCategory
       setName("");
       setDescription("");
       setColor("#000000");
@@ -51,27 +49,55 @@ const CategoryForm = ({ onSave, editingCategory }: Props) => {
 
   return (
     <div className="bg-white p-4 rounded shadow space-y-3 max-w-md mx-auto">
-      <input
-        className="border rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-        placeholder="Nombre"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        className="border rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-        placeholder="Descripción"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <input
-        className="border rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-        placeholder="Icono (ej: laptop)"
-        value={icon}
-        onChange={(e) => setIcon(e.target.value)}
-      />
-      <div className="flex items-center gap-3">
-        <label className="text-sm font-medium">Color:</label>
+      {/* Nombre */}
+      <div className="flex flex-col">
+        <label htmlFor="name" className="sr-only">
+          Nombre
+        </label>
         <input
+          id="name"
+          placeholder="Nombre"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="border rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
+
+      {/* Descripción */}
+      <div className="flex flex-col">
+        <label htmlFor="description" className="sr-only">
+          Descripción
+        </label>
+        <input
+          id="description"
+          placeholder="Descripción"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="border rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
+
+      {/* Icono */}
+      <div className="flex flex-col">
+        <label htmlFor="icon" className="sr-only">
+          Icono
+        </label>
+        <input
+          id="icon"
+          placeholder="Icono (ej: laptop)"
+          value={icon}
+          onChange={(e) => setIcon(e.target.value)}
+          className="border rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
+
+      {/* Color */}
+      <div className="flex items-center gap-3">
+        <label htmlFor="color" className="text-sm font-medium">
+          Color:
+        </label>
+        <input
+          id="color"
           type="color"
           value={color}
           onChange={(e) => setColor(e.target.value)}
@@ -79,6 +105,8 @@ const CategoryForm = ({ onSave, editingCategory }: Props) => {
         />
         <span className="ml-2 text-gray-700 font-medium">{color}</span>
       </div>
+
+      {/* Botón */}
       <button
         onClick={handleSubmit}
         className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
