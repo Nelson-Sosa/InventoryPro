@@ -195,4 +195,6 @@ json-server → backend ágil para pruebas técnicas
 ![Productos](screenshots/products.png)
 ![Categorías](screenshots/categories.png)
 ![Movimientos](screenshots/movements.png)
+![Reportes](screenshots/reports.png)
+![Usuarios](screenshots/users.png)
 
