@@ -2,7 +2,7 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  role: "admin" | "supervisor" | "user";
+  role: "admin" | "supervisor" | "operador";
   active: boolean;
-  lastLogin: string; // ISO date string
+  lastLogin: string; // ISO string
 }

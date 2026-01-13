@@ -23,6 +23,22 @@
       "name": "Operador User",
       "role": "operador",
       "status": "active"
+    },
+    {
+      "id": "ecab8561-0773-4036-9ed6-9fac46b5bbf5",
+      "name": "Jose admin",
+      "email": "jose@gmail.com",
+      "role": "admin",
+      "active": true,
+      "lastLogin": "2026-01-13T15:34:54.602Z"
+    },
+    {
+      "id": "ed1c426e-54d0-4d91-a1ee-086b1fb560e1",
+      "name": "Pablo admin",
+      "email": "pablo@gmail.com",
+      "role": "user",
+      "active": true,
+      "lastLogin": "2026-01-13T15:35:18.378Z"
     }
   ],
   "categories": [
