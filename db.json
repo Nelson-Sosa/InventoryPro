@@ -254,6 +254,23 @@
       "imageUrl": "https://m.media-amazon.com/images/I/71d7rfSl0wL.jpg",
       "createdAt": "2026-01-12T15:02:19.821Z",
       "updatedAt": "2026-01-12T15:02:19.821Z"
+    },
+    {
+      "id": "755c12f6-2461-4e54-a669-eab5447c3e26",
+      "sku": "ELEC-001",
+      "name": "Auriculares Bluetooth X100",
+      "description": "",
+      "categoryId": "b0c6bc83-a5fa-46c8-8017-a05bcae2d9c9",
+      "price": 350000,
+      "cost": 250000,
+      "stock": 50,
+      "minStock": 5,
+      "maxStock": 100,
+      "unit": "unidad",
+      "status": "active",
+      "imageUrl": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQw5iELptv2fuyC4soygckZUs7yxU7wuOfEfvqzsAyMTl_lfFRRScpZUf8XVuyjcs0fJll4bIcYa0Uzh2C26TYQ7PzUNBQ8SBcc5cyIkZoQzflbhVPICt_OVBZ0DZw7wG7BVB8nAg&usqp=CAc",
+      "createdAt": "2026-01-13T02:18:05.636Z",
+      "updatedAt": "2026-01-13T02:18:05.636Z"
     }
   ],
   "movements": [
