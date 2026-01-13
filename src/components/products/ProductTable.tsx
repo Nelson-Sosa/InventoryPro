@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Product } from "../../types/Product";
+import { Eye, Pencil, Trash2, PackagePlus } from "lucide-react";
+
 
 interface Props {
   products: Product[];
@@ -35,44 +37,89 @@ const ProductTable = ({ products, onDelete, onView, onEdit, onAdjustStock }: Pro
   };
 
   return (
-    <table className="w-full border">
-      <thead>
+  <div className="w-full overflow-x-auto rounded-lg border bg-white shadow-sm">
+    <table className="w-full border-collapse text-sm">
+      <thead className="bg-gray-100 text-gray-700">
         <tr>
-          <th onClick={() => handleSort("sku")} className="cursor-pointer">SKU</th>
-          <th onClick={() => handleSort("name")} className="cursor-pointer">Nombre</th>
-          <th onClick={() => handleSort("stock")} className="cursor-pointer">Stock</th>
-          <th onClick={() => handleSort("price")} className="cursor-pointer">Precio</th>
-          <th onClick={() => handleSort("createdAt")} className="cursor-pointer">Creado</th>
-          <th>Estado</th>
-          <th>Acciones</th>
+          <th onClick={() => handleSort("sku")} className="cursor-pointer px-3 py-2 text-left hover:text-blue-600">
+            SKU
+          </th>
+          <th onClick={() => handleSort("name")} className="cursor-pointer px-3 py-2 text-left hover:text-blue-600">
+            Nombre
+          </th>
+          <th onClick={() => handleSort("stock")} className="cursor-pointer px-3 py-2 text-left hover:text-blue-600">
+            Stock
+          </th>
+          <th onClick={() => handleSort("price")} className="cursor-pointer px-3 py-2 text-left hover:text-blue-600">
+            Precio
+          </th>
+          <th onClick={() => handleSort("createdAt")} className="cursor-pointer px-3 py-2 text-left hover:text-blue-600">
+            Creado
+          </th>
+          <th className="px-3 py-2 text-left">Estado</th>
+          <th className="px-3 py-2 text-left">Acciones</th>
         </tr>
       </thead>
-      <tbody>
-        {sortedProducts.map(p => {
-          let stockColor = "text-green-600";
-          if (p.stock === 0) stockColor = "text-red-600";
-          else if (p.stock < p.minStock) stockColor = "text-yellow-600";
+
+      <tbody className="divide-y">
+        {sortedProducts.map((p) => {
+          let stockColor = "text-green-600 font-medium";
+          if (p.stock === 0) stockColor = "text-red-600 font-medium";
+          else if (p.stock < p.minStock) stockColor = "text-yellow-600 font-medium";
 
           return (
-            <tr key={p.id}>
-              <td>{p.sku}</td>
-              <td>{p.name}</td>
-              <td className={stockColor}>{p.stock}</td>
-              <td>${p.price}</td>
-              <td>{new Date(p.createdAt).toLocaleDateString()}</td>
-              <td>{p.status}</td>
-              <td className="flex gap-2">
-                <button className="text-blue-600" onClick={() => onView(p.id)}>Ver</button>
-                <button className="text-yellow-600" onClick={() => onEdit(p.id)}>Editar</button>
-                <button className="text-purple-600" onClick={() => onAdjustStock(p)}>Ajustar Stock</button>
-                <button className="text-red-600" onClick={() => onDelete(p.id)}>Eliminar</button>
+            <tr key={p.id} className="hover:bg-gray-50 transition-colors">
+              <td className="px-3 py-2">{p.sku}</td>
+              <td className="px-3 py-2 font-medium text-gray-900">{p.name}</td>
+              <td className={`px-3 py-2 ${stockColor}`}>{p.stock}</td>
+              <td className="px-3 py-2">${p.price}</td>
+              <td className="px-3 py-2">
+                {new Date(p.createdAt).toLocaleDateString()}
               </td>
+              <td className="px-3 py-2 capitalize">{p.status}</td>
+             <td className="px-3 py-2">
+  <div className="flex items-center gap-3">
+    <button
+      onClick={() => onView(p.id)}
+      className="text-blue-600 hover:text-blue-800"
+      title="Ver"
+    >
+      <Eye size={18} />
+    </button>
+
+    <button
+      onClick={() => onEdit(p.id)}
+      className="text-yellow-600 hover:text-yellow-800"
+      title="Editar"
+    >
+      <Pencil size={18} />
+    </button>
+
+    <button
+      onClick={() => onAdjustStock(p)}
+      className="text-purple-600 hover:text-purple-800"
+      title="Ajustar stock"
+    >
+      <PackagePlus size={18} />
+    </button>
+
+    <button
+      onClick={() => onDelete(p.id)}
+      className="text-red-600 hover:text-red-800"
+      title="Eliminar"
+    >
+      <Trash2 size={18} />
+    </button>
+  </div>
+</td>
             </tr>
           );
         })}
       </tbody>
     </table>
-  );
+  </div>
+);
+
 };
 
 export default ProductTable;

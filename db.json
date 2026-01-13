@@ -71,13 +71,13 @@
       "categoryId": "1",
       "price": 1999.99,
       "cost": 1500,
-      "stock": 6,
+      "stock": 9,
       "minStock": 5,
       "maxStock": 50,
       "unit": "unidad",
       "status": "discontinued",
       "createdAt": "2024-01-01",
-      "updatedAt": "2026-01-12T15:50:17.621Z",
+      "updatedAt": "2026-01-13T03:02:38.596Z",
       "imageUrl": "https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111902_mbp14-silver2.png"
     },
     {
