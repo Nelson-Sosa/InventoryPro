@@ -55,11 +55,11 @@
       "icon": "💾"
     },
     {
-      "id": "1e2bb890-2328-4904-8dc8-d31a4b8840c9",
-      "name": "tablet",
-      "description": "dispositivo electrónico portátil con pantalla táctil, más grande que un smartphon",
+      "id": "f5ef102f-8e2f-4091-bfb1-6a4df36b142c",
+      "name": "tablets",
+      "description": "de todas las marcar",
       "color": "#000000",
-      "icon": "🔲"
+      "icon": "⬛"
     }
   ],
   "products": [
@@ -71,13 +71,13 @@
       "categoryId": "1",
       "price": 1999.99,
       "cost": 1500,
-      "stock": 9,
+      "stock": 10,
       "minStock": 5,
       "maxStock": 50,
       "unit": "unidad",
       "status": "discontinued",
       "createdAt": "2024-01-01",
-      "updatedAt": "2026-01-13T03:02:38.596Z",
+      "updatedAt": "2026-01-13T03:53:39.453Z",
       "imageUrl": "https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111902_mbp14-silver2.png"
     },
     {
@@ -350,6 +350,17 @@
       "reason": "compra por cliente",
       "userId": "1",
       "createdAt": "2026-01-13T03:46:36.061Z"
+    },
+    {
+      "id": "73eec823-27e3-47f6-b1b2-89a84625367d",
+      "productId": "1",
+      "type": "entrada",
+      "quantity": 1,
+      "previousStock": 9,
+      "newStock": 10,
+      "reason": "vendido",
+      "userId": "1",
+      "createdAt": "2026-01-13T03:53:39.445Z"
     }
   ]
 }

@@ -1,18 +1,13 @@
+import React, { useState } from "react";
 import { useCategories } from "../../hooks/useCategories";
 import { useProducts } from "../../hooks/useProducts";
 import { Category } from "../../types/category";
-import { useState } from "react";
-import { v4 as uuid } from "uuid";
+import CategoryForm from "../../components/Categories/CategoryForm";
+
 
 const CategoriesPage = () => {
   const { categories, createCategory, deleteCategory, updateCategory } = useCategories();
   const { products } = useProducts();
-
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [color, setColor] = useState("#000000");
-  const [icon, setIcon] = useState("");
-  const [editingCategoryId, setEditingCategoryId] = useState<string | null>(null);
 
   const getProductCount = (categoryId: string) =>
     products.filter(p => p.categoryId === categoryId).length;
@@ -20,98 +15,41 @@ const CategoriesPage = () => {
   const canDeleteCategory = (categoryId: string) =>
     !products.some(p => p.categoryId === categoryId);
 
-  const handleCreateOrUpdate = () => {
-  if (!name.trim()) return;
+  const [editingCategory, setEditingCategory] = useState<Category | null>(null);
 
-  if (editingCategoryId) {
-    // Editar categoría existente
-    updateCategory({
-      id: editingCategoryId,
-      name,
-      description,
-      color,
-      icon,
-    });
-    setEditingCategoryId(null);
-  } else {
-    // Crear nueva categoría
-    const newCategory: Category = {
-      id: uuid(),
-      name,
-      description,
-      color,
-      icon,
-    };
-    createCategory(newCategory);
-  }
-
-  setName("");
-  setDescription("");
-  setColor("#000000");
-  setIcon("");
-};
-
-
-  const handleEditClick = (category: Category) => {
-    setEditingCategoryId(category.id);
-    setName(category.name);
-    setDescription(category.description);
-    setColor(category.color);
-    setIcon(category.icon);
+  const handleSave = (category: Category) => {
+    if (categories.some(c => c.id === category.id)) {
+      updateCategory(category);
+    } else {
+      createCategory(category);
+    }
+    setEditingCategory(null); // reset
   };
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="text-2xl font-bold">Categorías</h1>
+      <h1 className="text-2xl font-bold text-center">Categorías</h1>
 
-      {/* Crear / Editar categoría */}
-      <div className="bg-white p-4 rounded shadow space-y-2">
-        <input
-          className="border p-2 w-full"
-          placeholder="Nombre"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
-        <input
-          className="border p-2 w-full"
-          placeholder="Descripción"
-          value={description}
-          onChange={e => setDescription(e.target.value)}
-        />
-        <input
-          className="border p-2 w-full"
-          placeholder="Icono (ej: laptop)"
-          value={icon}
-          onChange={e => setIcon(e.target.value)}
-        />
-        <input
-          type="color"
-          value={color}
-          onChange={e => setColor(e.target.value)}
-        />
-
-        <button
-          onClick={handleCreateOrUpdate}
-          className="bg-blue-600 text-white px-4 py-2 rounded"
-        >
-          {editingCategoryId ? "Actualizar categoría" : "Crear categoría"}
-        </button>
-      </div>
+      {/* Formulario */}
+      <CategoryForm onSave={handleSave} editingCategory={editingCategory} />
 
       {/* Listado */}
-      <table className="w-full border">
+      <table className="w-full border-collapse border mt-6">
         <thead className="bg-gray-100">
           <tr>
-            <th className="p-2">Nombre</th>
-            <th className="p-2">Color</th>
-            <th className="p-2">Icono</th>
-            <th className="p-2">Productos</th>
-            <th className="p-2">Acciones</th>
+            <th className="p-2 text-left">Nombre</th>
+            <th className="p-2 text-left">Color</th>
+            <th className="p-2 text-left">Icono</th>
+            <th className="p-2 text-left">Productos</th>
+            <th className="p-2 text-left">Acciones</th>
           </tr>
         </thead>
         <tbody>
           {categories.map(category => (
-            <tr key={category.id} className="border-t">
+            <tr
+              key={category.id}
+              className="border-t even:bg-gray-50 hover:bg-gray-100 transition-colors"
+            >
               <td className="p-2">{category.name}</td>
               <td className="p-2">
                 <span
@@ -124,16 +62,19 @@ const CategoriesPage = () => {
               <td className="p-2">{category.icon}</td>
               <td className="p-2">{getProductCount(category.id)}</td>
               <td className="p-2 flex gap-2">
+                {/* Editar */}
                 <button
-                  onClick={() => handleEditClick(category)}
-                  className="bg-yellow-500 text-white px-3 py-1 rounded"
+                  onClick={() => setEditingCategory(category)}
+                  className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition"
                 >
                   Editar
                 </button>
+
+                {/* Eliminar */}
                 <button
-                  disabled={!canDeleteCategory(category.id)}
                   onClick={() => deleteCategory(category.id)}
-                  className="bg-red-600 text-white px-3 py-1 rounded disabled:opacity-50"
+                  disabled={!canDeleteCategory(category.id)}
+                  className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 disabled:opacity-50 transition"
                 >
                   Eliminar
                 </button>
