@@ -55,95 +55,76 @@ El proyecto fue desarrollado cumpliendo estrictamente los Requisitos Funcionales
 - ✔ Mensajes de error claros
 
 
-📊 RF-02: Dashboard Principal
-Métricas implementadas
+## 📊 RF-02: Dashboard Principal
 
-✅ Total de productos registrados
-✅ Productos con stock bajo
-✅ Productos sin stock
-✅ Valor total del inventario (stock × costo)
-✅ Movimientos recientes (día / semana)
-✅ Top 5 productos con más movimientos
+### Métricas implementadas
+- ✅ Total de productos registrados
+- ✅ Productos con stock bajo
+- ✅ Productos sin stock
+- ✅ Valor total del inventario (stock × costo)
+- ✅ Movimientos recientes (día / semana)
+- ✅ Top 5 productos con más movimientos
 
-Componentes visuales
+### Componentes visuales
+- Cards de resumen con iconos
+- Gráfico de movimientos (Recharts)
+- Tabla de alertas de stock bajo
+- Lista de últimos movimientos
+## 📦 RF-03: Gestión de Productos (CRUD Completo)
 
-Cards de resumen con iconos
+### Listado de productos
+- ✅ Tabla con paginación
+- ✅ Ordenamiento por columnas
+- ✅ Búsqueda por SKU, nombre o descripción
+- ✅ Filtros por categoría, estado y stock bajo
+- ✅ Indicadores visuales de estado de stock
+- ✅ Acciones: ver, editar, eliminar, ajustar stock
 
-Gráfico de movimientos (Recharts)
+### Crear / Editar producto
+- ✅ Formulario dedicado
+- ✅ Validación completa de campos
+- ✅ SKU único
+- ✅ Selector de categoría
+- ✅ Preview de imagen por URL
+- ✅ Confirmación antes de guardar
 
-Tabla de alertas de stock bajo
+### Detalle de producto
+- ✅ Vista completa del producto
+- ✅ Historial de movimientos
+- ✅ Acciones rápidas
 
-Lista de últimos movimientos
+### Eliminación
+- ✅ Confirmación previa
+- ✅ Soft delete (status: discontinued)
+## 🗂️ RF-04: Gestión de Categorías
 
-📦 RF-03: Gestión de Productos (CRUD Completo)
-Listado de productos
+- ✅ CRUD completo de categorías
+- ✅ Campos: nombre, descripción, color, icono
+- ✅ Conteo de productos por categoría
+- ✅ Restricción para eliminar categorías con productos asociados
+## 🔄 RF-05: Movimientos de Inventario
 
-✅ Tabla con paginación
-✅ Ordenamiento por columnas
-✅ Búsqueda por SKU, nombre o descripción
-✅ Filtros por categoría, estado y stock bajo
-✅ Indicadores visuales de estado de stock
-✅ Acciones: ver, editar, eliminar, ajustar stock
+### Registro
+- ✅ Entrada / salida / ajuste
+- ✅ Selector de producto
+- ✅ Validación de stock disponible
+- ✅ Motivo obligatorio
+- ✅ Actualización automática del stock
 
-Crear / Editar producto
+### Historial
+- ✅ Tabla de movimientos
+- ✅ Filtros por tipo, producto y fecha
+- ✅ Indicadores visuales por tipo
+- ✅ Exportación opcional (CSV)
+## 📈 RF-06: Reportes
 
-✅ Formulario dedicado
-✅ Validación completa de campos
-✅ SKU único
-✅ Selector de categoría
-✅ Preview de imagen por URL
-✅ Confirmación antes de guardar
+- ✅ Reporte de inventario actual
+- ✅ Reporte de productos con stock bajo
+- ✅ Reporte de movimientos por período
+- ✅ Valorización del inventario
+- ✅ Vista previa en pantalla
+- 🟡 Exportación PDF (opcional)
 
-Detalle de producto
-
-✅ Vista completa del producto
-✅ Historial de movimientos
-✅ Acciones rápidas
-
-Eliminación
-
-✅ Confirmación previa
-✅ Soft delete (status: discontinued)
-
-🗂️ RF-04: Gestión de Categorías
-
-✅ CRUD completo de categorías
-✅ Campos: nombre, descripción, color, icono
-✅ Conteo de productos por categoría
-✅ Restricción para eliminar categorías con productos asociados
-
-🔄 RF-05: Movimientos de Inventario
-Registro
-
-✅ Entrada / salida / ajuste
-✅ Selector de producto
-✅ Validación de stock disponible
-✅ Motivo obligatorio
-✅ Actualización automática del stock
-
-Historial
-
-✅ Tabla de movimientos
-✅ Filtros por tipo, producto y fecha
-✅ Indicadores visuales por tipo
-✅ Exportación opcional (CSV)
-
-📈 RF-06: Reportes
-
-✅ Reporte de inventario actual
-✅ Reporte de productos con stock bajo
-✅ Reporte de movimientos por período
-✅ Valorización del inventario
-✅ Vista previa en pantalla
-🟡 Exportación PDF (opcional)
-
-👥 RF-07: Gestión de Usuarios (BONUS)
-
-✅ Listado de usuarios
-✅ Crear y editar usuarios
-✅ Asignación de roles
-✅ Activar / desactivar usuarios
-✅ Visualización de último acceso
 
 🚀 Instalación y ejecución
 git clone https://github.com/Nelson-Sosa/InventoryPro.git
