@@ -3,14 +3,16 @@ import Sidebar from "../navegacion/Sidebar";
 
 const MainLayout = () => {
   return (
-    <div className="flex">
-      {/* Sidebar fijo */}
-      <Sidebar />
+    <div className="flex h-screen overflow-hidden">
+      {/* Sidebar */}
+      <aside className="w-64 flex-shrink-0">
+        <Sidebar />
+      </aside>
 
-      {/* Contenido dinámico */}
-      <main className="flex-1 min-h-screen bg-gray-100 p-6">
+      {/* Contenido */}
+      <section className="flex-1 overflow-y-auto bg-gray-100">
         <Outlet />
-      </main>
+      </section>
     </div>
   );
 };
