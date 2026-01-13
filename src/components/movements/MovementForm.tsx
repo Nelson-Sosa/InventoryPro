@@ -73,45 +73,67 @@ const MovementForm = ({ onMovementSaved }: Props) => {
   };
 
   return (
-    <div className="p-4 border rounded max-w-xl space-y-2">
-      <h2 className="text-xl font-bold">Registrar Movimiento</h2>
+    <div className="p-6 max-w-xl mx-auto space-y-4 border rounded-lg shadow-sm bg-white">
+      <h2 className="text-2xl font-bold text-center mb-2">Registrar Movimiento</h2>
 
-      {error && <p className="text-red-600">{error}</p>}
+      {error && (
+        <p className="text-red-600 bg-red-100 border border-red-300 px-3 py-2 rounded">
+          {error}
+        </p>
+      )}
 
-      <select value={productId} onChange={e => setProductId(e.target.value)}>
-        <option value="">Seleccione producto</option>
-        {products.map(p => (
-          <option key={p.id} value={p.id}>
-            {p.sku} - {p.name}
-          </option>
-        ))}
-      </select>
+      <div className="flex flex-col space-y-3">
+        {/* Producto */}
+        <select
+          value={productId}
+          onChange={e => setProductId(e.target.value)}
+          className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          <option value="">Seleccione producto</option>
+          {products.map(p => (
+            <option key={p.id} value={p.id}>
+              {p.sku} - {p.name}
+            </option>
+          ))}
+        </select>
 
-      <select value={type} onChange={e => setType(e.target.value as Movement["type"])}>
-        <option value="entrada">Entrada</option>
-        <option value="salida">Salida</option>
-        <option value="ajuste">Ajuste</option>
-      </select>
+        {/* Tipo de movimiento */}
+        <select
+          value={type}
+          onChange={e => setType(e.target.value as Movement["type"])}
+          className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          <option value="entrada">Entrada</option>
+          <option value="salida">Salida</option>
+          <option value="ajuste">Ajuste</option>
+        </select>
 
-      <input
-        type="number"
-        placeholder="Cantidad"
-        value={quantity}
-        onChange={e => setQuantity(Number(e.target.value))}
-      />
+        {/* Cantidad */}
+        <input
+          type="number"
+          placeholder="Cantidad"
+          value={quantity}
+          onChange={e => setQuantity(Number(e.target.value))}
+          className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
 
-      <input
-        placeholder="Motivo (obligatorio)"
-        value={reason}
-        onChange={e => setReason(e.target.value)}
-      />
+        {/* Motivo */}
+        <input
+          placeholder="Motivo (obligatorio)"
+          value={reason}
+          onChange={e => setReason(e.target.value)}
+          className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
 
-      <button
-  onClick={handleSubmit}
-  className="bg-blue-600 text-white px-4 py-2 rounded"
->
-  Guardar Movimiento
-</button>
+      <div className="flex justify-center mt-4">
+        <button
+          onClick={handleSubmit}
+          className="bg-blue-600 hover:bg-blue-700 transition-colors text-white font-semibold px-6 py-2 rounded shadow"
+        >
+          Guardar Movimiento
+        </button>
+      </div>
     </div>
   );
 };

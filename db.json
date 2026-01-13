@@ -263,14 +263,14 @@
       "categoryId": "b0c6bc83-a5fa-46c8-8017-a05bcae2d9c9",
       "price": 350000,
       "cost": 250000,
-      "stock": 50,
+      "stock": 70,
       "minStock": 5,
       "maxStock": 100,
       "unit": "unidad",
       "status": "active",
       "imageUrl": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQw5iELptv2fuyC4soygckZUs7yxU7wuOfEfvqzsAyMTl_lfFRRScpZUf8XVuyjcs0fJll4bIcYa0Uzh2C26TYQ7PzUNBQ8SBcc5cyIkZoQzflbhVPICt_OVBZ0DZw7wG7BVB8nAg&usqp=CAc",
       "createdAt": "2026-01-13T02:18:05.636Z",
-      "updatedAt": "2026-01-13T02:18:05.636Z"
+      "updatedAt": "2026-01-13T02:23:17.205Z"
     }
   ],
   "movements": [
@@ -328,6 +328,17 @@
       "reason": "clientes compra",
       "userId": "1",
       "createdAt": "2026-01-13T01:43:44.596Z"
+    },
+    {
+      "id": "a1153c03-e332-4479-ac3f-e13520f7c5f7",
+      "productId": "755c12f6-2461-4e54-a669-eab5447c3e26",
+      "type": "entrada",
+      "quantity": 20,
+      "previousStock": 50,
+      "newStock": 70,
+      "reason": "comprado por emprendedores",
+      "userId": "1",
+      "createdAt": "2026-01-13T02:23:17.196Z"
     }
   ]
 }
