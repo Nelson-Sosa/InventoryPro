@@ -10,15 +10,16 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    const success = login(email, password);
-    if (!success) {
-      setError("Credenciales inválidas");
-      return;
-    }
-    navigate("/dashboard");
-  };
+  const handleLogin = async (e: React.FormEvent) => {
+  e.preventDefault();
+  const success = await login(email, password); // ⬅️ agregar await
+  if (!success) {
+    setError("Credenciales inválidas");
+    return;
+  }
+  navigate("/dashboard");
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

@@ -30,13 +30,15 @@
       "id": "1",
       "name": "Laptops",
       "description": "Portátiles",
-      "color": "#3B82F6"
+      "color": "#3B82F6",
+      "icon": "💻"
     },
     {
       "id": "2",
       "name": "Smartphones",
       "description": "Teléfonos",
-      "color": "#10B981"
+      "color": "#10B981",
+      "icon": "📲"
     },
     {
       "id": "b0c6bc83-a5fa-46c8-8017-a05bcae2d9c9",
@@ -50,7 +52,14 @@
       "name": "Componentes",
       "description": "procesadores, placas de video, memoria ram, almacenamientos",
       "color": "#000000",
-      "icon": ""
+      "icon": "💾"
+    },
+    {
+      "id": "1e2bb890-2328-4904-8dc8-d31a4b8840c9",
+      "name": "tablet",
+      "description": "dispositivo electrónico portátil con pantalla táctil, más grande que un smartphon",
+      "color": "#000000",
+      "icon": "🔲"
     }
   ],
   "products": [
@@ -94,13 +103,13 @@
       "categoryId": "1",
       "price": 50,
       "cost": 30,
-      "stock": 1,
+      "stock": 0,
       "minStock": 5,
       "maxStock": 50,
       "unit": "unidad",
       "status": "discontinued",
       "createdAt": "2026-01-11T08:00:00Z",
-      "updatedAt": "2026-01-11T08:00:00Z"
+      "updatedAt": "2026-01-12T23:26:17.354Z"
     },
     {
       "id": "11",
@@ -125,13 +134,13 @@
       "categoryId": "2",
       "price": 999.99,
       "cost": 750,
-      "stock": "3815",
+      "stock": 30,
       "minStock": 10,
       "maxStock": 100,
       "unit": "unidad",
       "status": "active",
       "createdAt": "2024-01-20",
-      "updatedAt": "2026-01-12T22:48:04.076Z"
+      "updatedAt": "2026-01-12T23:34:42.954Z"
     },
     {
       "id": "4",
@@ -157,13 +166,13 @@
       "categoryId": "1",
       "price": 599.99,
       "cost": 420,
-      "stock": 8,
+      "stock": 11,
       "minStock": 10,
       "maxStock": 30,
       "unit": "unidad",
       "status": "active",
       "createdAt": "2024-01-25",
-      "updatedAt": "2024-01-25"
+      "updatedAt": "2026-01-13T01:43:44.602Z"
     },
     {
       "id": "6",
@@ -205,7 +214,7 @@
       "categoryId": "1",
       "price": 99.99,
       "cost": 65,
-      "stock": 54,
+      "stock": 56,
       "minStock": 10,
       "maxStock": 60,
       "unit": "unidad",
@@ -291,6 +300,17 @@
       "reason": "compra de proveedores",
       "userId": "1",
       "createdAt": "2026-01-12T22:48:04.066Z"
+    },
+    {
+      "id": "811e2907-79ac-4b04-a66a-d41ecef784ff",
+      "productId": "5",
+      "type": "entrada",
+      "quantity": 3,
+      "previousStock": 8,
+      "newStock": 11,
+      "reason": "clientes compra",
+      "userId": "1",
+      "createdAt": "2026-01-13T01:43:44.596Z"
     }
   ]
 }

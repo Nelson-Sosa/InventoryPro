@@ -11,16 +11,17 @@ const RegisterPage = () => {
   const [role, setRole] = useState<"admin" | "supervisor" | "operador">("operador");
   const [error, setError] = useState("");
 
-  const handleRegister = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || !password) {
-      setError("Todos los campos son obligatorios");
-      return;
-    }
+const handleRegister = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!email || !password) {
+    setError("Todos los campos son obligatorios");
+    return;
+  }
 
-    register({ email, password, role });
-    navigate("/dashboard");
-  };
+  await register({ email, password, role }); // ⬅️ await
+  navigate("/dashboard");
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

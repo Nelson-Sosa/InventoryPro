@@ -1,18 +1,18 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import type { ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 export interface User {
+  id: string;
   email: string;
+  password: string; // solo para login
   role: "admin" | "supervisor" | "operador";
   token: string;
-  password?: string; // solo para login
 }
 
 interface AuthContextType {
   user: User | null;
   login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
-  register: (user: Omit<User, "token"> & { password: string }) => void;
+  register: (user: Omit<User, "token" | "id"> & { password: string }) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -23,38 +23,36 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return stored ? JSON.parse(stored) : null;
   });
 
-  // Login con JSON Server y localStorage
   const login = async (email: string, password: string) => {
     try {
-      // 1. Intentar buscar usuario en JSON Server
+      // 1️⃣ buscar en JSON Server
       const res = await fetch("http://localhost:3001/users");
-      const users: any[] = await res.json();
-
+      const users: User[] = await res.json();
       const found = users.find(u => u.email === email && u.password === password);
 
       if (found) {
         const token = "fake-jwt-token";
-        const newUser: User = { email: found.email, role: found.role as User["role"], token };
-        setUser(newUser);
-        localStorage.setItem("user", JSON.stringify(newUser));
+        const loggedUser = { ...found, token };
+        setUser(loggedUser);
+        localStorage.setItem("user", JSON.stringify(loggedUser));
         return true;
       }
 
-      // 2. Si no está en JSON Server, buscar en localStorage usuarios registrados en la sesión
-      const savedUsers = JSON.parse(localStorage.getItem("users") || "[]");
-      const foundLocal = savedUsers.find((u: any) => u.email === email && u.password === password);
+      // 2️⃣ fallback: usuarios locales
+      const localUsers: User[] = JSON.parse(localStorage.getItem("localUsers") || "[]");
+      const foundLocal = localUsers.find(u => u.email === email && u.password === password);
 
       if (foundLocal) {
         const token = "fake-jwt-token";
-        const newUser: User = { email: foundLocal.email, role: foundLocal.role as User["role"], token };
-        setUser(newUser);
-        localStorage.setItem("user", JSON.stringify(newUser));
+        const loggedUser = { ...foundLocal, token };
+        setUser(loggedUser);
+        localStorage.setItem("user", JSON.stringify(loggedUser));
         return true;
       }
 
-      return false; // no se encontró el usuario
+      return false;
     } catch (error) {
-      console.error("Error login:", error);
+      console.error("Login error:", error);
       return false;
     }
   };
@@ -64,22 +62,24 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     localStorage.removeItem("user");
   };
 
-  const register = (u: Omit<User, "token"> & { password: string }) => {
+  const register = async (u: Omit<User, "token" | "id"> & { password: string }) => {
+    const id = crypto.randomUUID();
     const token = "fake-jwt-token";
-    const newUser: User = { ...u, token };
+    const newUser: User = { ...u, id, token };
 
-    // Guardar en localStorage para login posterior
-    const savedUsers = JSON.parse(localStorage.getItem("users") || "[]");
-    savedUsers.push(u); // solo email, password, role
-    localStorage.setItem("users", JSON.stringify(savedUsers));
+    // Guardar localmente
+    const savedUsers: User[] = JSON.parse(localStorage.getItem("localUsers") || "[]");
+    savedUsers.push({ ...newUser });
+    localStorage.setItem("localUsers", JSON.stringify(savedUsers));
 
+    // Auto-login
     setUser(newUser);
     localStorage.setItem("user", JSON.stringify(newUser));
   };
 
   useEffect(() => {
     if (user) {
-      const timer = setTimeout(() => logout(), 1000 * 60 * 60); // expira en 1 hora
+      const timer = setTimeout(() => logout(), 1000 * 60 * 60); // 1 hora
       return () => clearTimeout(timer);
     }
   }, [user]);
