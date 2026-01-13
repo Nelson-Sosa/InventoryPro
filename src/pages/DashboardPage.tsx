@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
-import { useNavigate } from "react-router-dom";
+
 
 
 interface Product {
@@ -21,11 +21,11 @@ interface Movement {
 }
 
 const DashboardPage = () => {
-  const { user, logout } = useAuth();
+  const { user} = useAuth();
 
   const [products, setProducts] = useState<Product[]>([]);
   const [movements, setMovements] = useState<Movement[]>([]);
-  const navigate = useNavigate();
+  
   useEffect(() => {
     const fetchData = async () => {
       try {

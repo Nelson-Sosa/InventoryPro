@@ -73,3 +73,8 @@ Si el proyecto creciera a 20 módulos con 5 desarrolladores, propondría estos c
 - **Establecer convenciones de desarrollo y componentes reutilizables**: Unificar estilos, formularios y layouts para que varios desarrolladores trabajen sin conflictos.
 
 - **Testing y documentación**: Implementar tests unitarios y de integración, y documentar componentes y APIs para facilitar onboarding de nuevos devs.
+
+----------------------------------------------------------------
+-**El proyecto utiliza TypeScript en modo estricto (`strict: true`)
+con interfaces bien definidas y sin uso de `any`. El tipado fue
+validado ejecutando `npx tsc --noEmit`.
