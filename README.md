@@ -152,7 +152,7 @@ GESTIONINVENTARIO
 │   ├── db.json
 │   └── package.json
 └── README.md
-
+```
 React + TypeScript → escalabilidad y seguridad
 
 Tailwind CSS → consistencia visual
@@ -163,6 +163,8 @@ Arquitectura modular → mantenibilidad
 
 json-server → backend ágil para pruebas técnicas
 
+## 📸 Screenshots
+
 ![Login](screenshots/login.png)
 ![Dashboard](screenshots/dashboard.png)
 ![Productos](screenshots/products.png)
@@ -170,4 +172,5 @@ json-server → backend ágil para pruebas técnicas
 ![Movimientos](screenshots/movements.png)
 ![Reportes](screenshots/reports1.png)
 ![Usuarios](screenshots/users.png)
+
 
