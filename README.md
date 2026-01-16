@@ -44,7 +44,7 @@ El proyecto fue desarrollado cumpliendo estrictamente los Requisitos Funcionales
 - ✅ JWT simulado
 - ✅ Persistencia de sesión
 - ✅ Rutas protegidas
-- ✅ Roles (Admin / Operador)
+- ✅ Roles (Admin / Operador/ supervisor)
 - ✅ Logout
 - ✅ Token expirado
 
